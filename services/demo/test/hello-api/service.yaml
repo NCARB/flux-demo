@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: &name hello-api
+  namespace: demo-test
+spec:
+  selector:
+    app: *name
+  ports:
+    - port: 5678 # Default port for image

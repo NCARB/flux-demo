@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &name hello-api
+  namespace: demo-test
+  labels:
+    app: *name
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: *name
+  template:
+    metadata:
+      labels:
+        app: *name
+    spec:
+      containers:
+        - name: *name
+          image: hashicorp/http-echo
+          args:
+            - '-text={ "message": "hello" }'
+      nodeSelector:
+        beta.kubernetes.io/os: linux

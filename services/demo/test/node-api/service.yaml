@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: &name node-api
+  namespace: demo-test
+spec:
+  selector:
+    app: *name
+  ports:
+    - port: 3000 # Default port for image

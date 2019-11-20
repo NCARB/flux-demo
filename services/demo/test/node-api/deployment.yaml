@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &name node-api
+  namespace: demo-test
+  labels:
+    app: *name
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.node-api: "glob:master-*"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: *name
+  template:
+    metadata:
+      labels:
+        app: *name
+    spec:
+      containers:
+      - name: *name
+        image: 057315424538.dkr.ecr.us-west-2.amazonaws.com/demo:master-e3c954a0c68d1c82a9729cdc3a35890e721a10ad
+      nodeSelector:
+        beta.kubernetes.io/os: linux

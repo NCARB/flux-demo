@@ -1,0 +1,12 @@
+on: push
+name: Validate
+jobs:
+  kubeval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: test
+        uses: instrumenta/kubeval-action@master
+        with:
+          files: namespaces,services
+          version: "1.14"

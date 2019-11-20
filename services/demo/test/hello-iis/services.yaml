@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: &name hello-iis
+  namespace: demo-test
+  labels:
+    service: *name
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    service: *name

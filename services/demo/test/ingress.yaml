@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-app
+  namespace: demo-test
+  labels:
+    service: hello-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: demo.test.ncarb.org
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: hello-app
+              servicePort: 5678
+          - path: /api
+            backend:
+              serviceName: hello-api
+              servicePort: 5678
+          - path: /admin(/|$)(.*)
+            backend:
+              serviceName: hello-iis
+              servicePort: 80
+          - path: /node(/|$)(.*)
+            backend:
+              serviceName: node-api
+              servicePort: 3000
