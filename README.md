@@ -5,7 +5,7 @@ here](https://github.com/fluxcd/flux/blob/master/docs/tutorials/get-started-helm
 
 ## Manifests Validation
 
-Github actions [jobs](./.github/workflow/):
+Github actions [jobs](./.github/workflows/validate.yaml):
 * validate Kubernetes manifests with [kubeval](https://github.com/instrumenta/kubeval)
 
 # Kubernetes
@@ -123,5 +123,16 @@ Open source kubernetes operator that syncs the state of the cluster with a git r
 
 </details>
 
-Notes on cluster setup for demo [here](./notes.md)
+## Demo
+
+Notes on initial cluster setup for demo [here](./notes.md)
+
+
+## Autodeploy
+
+Auto deploy sample project was [feinoujc/node-app](https://github.com/feinoujc/node-app)
+
+annotation that opts into auto deploy is in [services/demo/test/node-app/deployment.yaml](https://github.com/NCARB/flux-demo/blob/589dfa9ffbb3971c3acb9e53d4368983b0e2991e/services/demo/test/node-api/deployment.yaml#L9-L11)
+
+
 
